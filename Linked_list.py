@@ -12,5 +12,11 @@ class Link:
         else:
             return 'Link(' + str(self.first) + ')'
 
+    def __str__(self):
+        if self.rest:
+            return '< ' + str(self.first) + ' ' + self.rest.__str__() + '>'
+        else:
+            return '< ' + str(self.first) + '>'   
+        
 a = Link(1,Link(2,Link(3)))
 
