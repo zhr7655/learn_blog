@@ -41,8 +41,8 @@ to_pdf(source,target)
 
 
 '''def main():
-    source_path = "C:\\Users\\liubo\\Documents\\xwechat_files\\wxid_v3ipf5xcn1lc22_82cf\\temp\\ImageUtils"
-    target_dir = "D:\\saved_imgs"
+    source_path =
+    target_dir = 
     cp_mv_imgs(source_path,target_dir)
     source = "D:\\saved_imgs"
     target =  "D:\\pdfs"
