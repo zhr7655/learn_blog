@@ -1,4 +1,3 @@
-
 class Null:
     def __str__():
         return ""
@@ -102,3 +101,4 @@ def delete(node):
         suc = find_suc(node)
         swap(node,suc)
         delete(suc)
+#增删查找操作的时间复杂度均为O(h),其中h为二叉搜索树高度，由此可见，若想保持操作效率，实现平衡二叉树是很有必要的。
