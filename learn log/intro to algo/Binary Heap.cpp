@@ -8,7 +8,7 @@ template <typename T>
 class Heap
 {
 private:
-	funtion<bool(const T&, const T&)> compare;
+	function<bool(const T&, const T&)> compare;
 	vector<T> data;
 	int parent(int i) const { return (i - 1) / 2; }
 	int left(int i) const { return i * 2 + 1; }
@@ -17,17 +17,16 @@ private:
 	//上浮操作
 	void shift_up(int index)
 	{
-		while (index > 0 && compare(data[index], data[parent[index]]))
+		while (index > 0 && compare(data[index], data[parent(index)]))
 		{
-			swap(data[index], data[parent[index]]);
-			index = parent[index];
+			swap(data[index], data[parent(index)]);
+			index = parent(index);
 		}
 	}
 
 	//下沉操作
-	void shift_down(int index)
+	void shift_down(int index,int n)
 	{
-		int heap_size = data.size();
 		int smallest_or_biggest = index;
 
 		while (true)
@@ -35,11 +34,11 @@ private:
 			int l = left(index);
 			int r = right(index);
 
-			if(l < heap_size && compare(data[l],data[smallest_or_biggest]))
+			if(l < n && compare(data[l],data[smallest_or_biggest]))
 			{
 				smallest_or_biggest = l;
 			}
-			if (r < heap_size && compare(data[r], data[smallest_or_biggest]))
+			if (r < n && compare(data[r], data[smallest_or_biggest]))
 			{
 				smallest_or_biggest = r;
 			}
@@ -94,12 +93,21 @@ public:
 	{
 		if (empty())
 		{
-			throw out_of_range("容器是空的")
+			throw out_of_range("容器是空的");
 		}
 		data[0] = move(data.back());
 		data.pop_back();
 		if (!empty()) {
-			shift_down(0);
+			shift_down(0,data.size());
+		}
+	}
+
+	void heap_sort()
+	{
+		for(int i = data.size();i > 0;i--)
+		{
+			swap(data[0],data[i-1]);
+			shift_down(0,i-1);
 		}
 	}
 
