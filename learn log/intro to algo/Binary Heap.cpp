@@ -67,6 +67,17 @@ public:
 			push(item);
 		}
 	}
+	//原地构造
+	/*Heap(const vector<T>& arr,function<bool(const T&,const T&)> comp)
+		:compare(comp),
+		data(arr)
+		{
+			int n = data.size();
+			for(int i = n/2-1;i >= 0;i--)
+			{
+				shift_down(i);				
+			}
+		}*/
 
 	void push(const T& item)
 	{
